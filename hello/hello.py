@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 print('hello python')
 
-age = 27
+age = input('birth: ')
 if age >= 18:
     print('adult')
+elif age >= 6:
+    print('teen')
 else:
-    print('baby')
+    print('kid')
