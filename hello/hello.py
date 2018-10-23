@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 print('hello python')
 
-age = input('birth: ')
+birth = input('birth: ')
+age = int(birth)
 if age >= 18:
     print('adult')
 elif age >= 6:
