@@ -52,3 +52,16 @@ while m < 10:
     if m % 2 == 0:  # 如果n是偶数，执行continue语句
         continue  # continue语句会直接继续下一轮循环，后续的print()语句不会执行
     print(m)
+
+
+# dict
+# dict和list相比是空间换时间
+d = {'name': 'sea', 'age': 20}
+'name' in d
+d.get('age', 22)
+
+# set
+ss1 = set([1, 1, 3, 5])
+ss2 = set([2, 3, 4])
+print(ss1 & ss2)
+print(ss1 | ss2)
