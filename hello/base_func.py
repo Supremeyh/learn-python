@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 # 定义函数
 def my_abs(x):
     if not isinstance(x, (int, float)): # 参数类型做检查
