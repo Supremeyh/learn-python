@@ -73,6 +73,3 @@ dir('ABC')
 # getattr()、setattr() 、hasattr() ， 直接操作一个对象的状态
 hasattr(Student, 'y') # 有属性'y'吗？ # False
 
-    
-
-
