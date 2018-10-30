@@ -28,5 +28,28 @@ class Student(object):
 lisa = Student('Lisa Simpson', 88)
 lisa.print_score()
 
+# 访问限制
+class Teacher(object):
+    def __init__(self, name, age):
+        self.__name = name # 实例的变量名如果以__开头，就变成了一个私有变量（private）,内部属性不被外部访问
+        self.__age = age
+    def get_name(self):
+        return self.__name
+    def get_age(self):
+        return self.__age
+    def set_age(self,age):
+        if 0 <= age <= 100:
+            self.__age = age
+        else:
+            raise ValueError('bad age')
+
+# 特殊变量 ,__xxx__ , 双下划线且以双下划线结尾,可以直接访问的
+# 私有变量 ,__xxx , 双下划线,可以直接访问的, 内部属性不被外部访问. 因Python解释器对外把__name变量改成了_Student__name，
+# 故仍然可以通过_Student__name来访问__name变量。 Python本身没有任何机制阻止你干坏事，一切全靠自觉
+
+
+
+
+    
 
 
