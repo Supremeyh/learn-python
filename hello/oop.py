@@ -54,7 +54,24 @@ class Teacher(object):
 
 
 
+# 获取对象信息
+# type()， 判断对象类型
+type(123) # <class 'int'>
+type(abs) # <class 'builtin_function_or_method'>
 
+# types, 判断一个对象是否是函数
+type(abs)==types.BuiltinFunctionType # True
+
+# isinstance()  总是优先使用isinstance()判断类型，可以将指定类型及其子类“一网打尽”。
+isinstance('a', str) # True
+isinstance((1, 2, 3), (list, tuple)) # True
+
+# dir() 获得一个对象的所有属性和方法，它返回一个包含字符串的list
+dir('ABC') 
+# ['__add__', '__class__', '__contains__', ... ,  'translate', 'upper', 'zfill']
+
+# getattr()、setattr() 、hasattr() ， 直接操作一个对象的状态
+hasattr(Student, 'y') # 有属性'y'吗？ # False
 
     
 
