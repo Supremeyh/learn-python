@@ -6,6 +6,7 @@
 # 计算机程序的执行就是一系列消息在各个对象之间传递。
 
 # 所以，面向对象的设计思想是抽象出Class，根据Class创建Instance，面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法。
+
 # 数据封装、继承和多态是面向对象的三大特点。
 
 # 在Python中，所有数据类型都可以视为对象，当然也可以自定义对象。自定义的对象数据类型就是面向对象中的类（Class）的概念。
@@ -15,14 +16,15 @@
 # 如果要打印一个学生的成绩，首先必须创建出这个学生对应的对象，然后，给对象发一个print_score消息，让对象自己把自己的数据打印出来。
 class Student(object):
 
-    def __init__(self, name, score):
+    def __init__(self, name, score): # __init__方法的第一个参数永远是self，表示创建的实例本身
         self.name = name
         self.score = score
 
-    def print_score(self):
+    def print_score(self): # 第一个参数永远是实例变量self
         print('%s: %s' %(self.name, self.score))
     
-# 给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法（Method
+# 给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法Method
+# 面向对象编程的一个重要特点就是数据封装。在一个Student类中，每个实例就拥有各自的数据。
 lisa = Student('Lisa Simpson', 88)
 lisa.print_score()
 
