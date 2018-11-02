@@ -16,4 +16,21 @@ s.score = 89 # 报错， AttributeError: 'Student' object has no attribute 'scor
 # 除非在子类中也定义__slots__，这样，子类实例允许定义的属性就是自身的__slots__加上父类的__slots__。
 
 
+# @property装饰器
+# 负责把一个方法变成属性调用, 给函数动态加上功能,既能检查参数，又可以用类似属性这样简单的方式来访问类的变量
+class Teacher(object):
+    @property # 把一个getter方法变成属性，只需要加上@property就可以了
+    def age(self): 
+        return self._age
+    
+    @age.setter # @property本身又创建了另一个装饰器@score.setter，负责把一个setter方法变成属性赋值,拥有一个可控的属性操作
+    def age(self.value):
+        if not isinstance(value, int):
+            raise ValueError('age must be an integer!')
+        if value < 1 or value > 100:
+            raise ValueError('age must between 1 - 100')
+        self._age = value
+
+# 注意到这个神奇的@property，我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。
+# 还可以定义只读属性，只定义getter方法，不定义setter方法就是一个只读属性.
 
