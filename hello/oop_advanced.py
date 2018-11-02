@@ -71,7 +71,101 @@ class MyUDPServer(UDPServer, ThreadingMixIn):
 
 
 
+# __str__()和__repr__()
+# __str__()返回用户看到的字符串，而__repr__()返回程序开发者看到的字符串，也就是说，__repr__()是为调试服务的。
+# 打印出来的实例，不但好看，而且容易看出实例内部重要的数据。
+class School(object):
+    def __init__(self, name):
+        self.name = name 
+    def __str__(self):
+        return 'School object (name=%s)' % self.name
+    __repr__ = __str__
 
+
+# __iter__
+# 如果一个类想被用于for ... in循环，类似list或tuple那样，就必须实现一个__iter__()方法，该方法返回一个迭代对象，
+# 然后，Python的for循环就会不断调用该迭代对象的__next__()方法拿到循环的下一个值，
+# 直到遇到StopIteration错误时退出循环。
+class Fib(object):
+    def __init__(self):
+        self.a, self.b = 0, 1 # 初始化两个计数器a，b
+    def __iter__(self):
+        return self  # 实例本身就是迭代对象，故返回自己
+    def __next__(self):
+        self.a, self.b = self.b, self.a + self.b # 计算下一个值
+        if self.a > 10000:  # 退出循环的条件
+            raise StopIteration() 
+        return self.a  # 返回下一个值
+
+# 把Fib实例作用于for循环
+for n in Fib():
+    print(n)
+# 1 1 2 3 5 8 13 21 ... 6765
+
+
+# __getitem__
+# 像list那样按照下标取出元素, 传入的参数可能是一个int，也可能是一个切片对象slice,所以要做判断
+def Fib(object):
+    def __getitem__(self, n):
+        if isinstance(n, int): # n是索引
+            a, b = 1, 1
+            for x in range(n):
+                a, b = b, a + b
+            return a
+        if isinstance(n, slice): # n是切片
+            start = n.start
+            stop = n.stop
+            if start is None:
+                start = 0
+            a, b = 1, 1
+            L = []
+            for x in range(stop):
+                if x >= start:
+                    L.append(a)
+                a, b = b, a + b
+            return L
+
+# 现在，就可以按下标访问数列的任意一项了：
+f = Fib()
+f[10] # 89
+f[:5] # 1, 1, 2, 3, 5
+
+# 与之对应的是__setitem__()方法，把对象视作list或dict来对集合赋值。最后，还有一个__delitem__()方法，用于删除某个元素。
+# 通过上面的方法，自己定义的类表现得和Python自带的list、tuple、dict没什么区别，这完全归功于动态语言的“鸭子类型”，不需要强制继承某个接口。
+
+
+# __getattr__
+# 正常情况下，当我们调用类的方法或属性时，如果不存在，就会报错。比如定义Student类：
+# 写一个__getattr__()方法，动态返回一个属性
+
+# 利用完全动态的__getattr__，我们可以写出一个链式调用：
+class Chain(object):
+    def __init__(self, path=''):
+        self._path = path
+    def __getattr__(self, attr):
+        return Chain('%s/%s' % (self._path, path))
+    def __str__(self):
+        return self._path
+    __repr__ = __str__
+# 这样，无论API怎么变，SDK都可以根据URL实现完全动态的调用，而且，不随API的增加而改变！
+Chain().status.user.timeline.list  #'/status/user/timeline/list'
+# REST API会把参数放到URL中，比如GitHub的API: GET /users/:user/repos 调用时，需要把:user替换为实际用户名
+Chain().users('sea').repos #  '/users/sea/repos'
+
+
+# __call__
+# 直接对实例进行调用自己的属性和方法
+class Book(object):
+    def __init__(self, name):
+        self.name = name
+    def __call__(self):
+        print('the book name is %s.' % self.name)
+# 调用方式如下：
+b = Book('Game of Thrones')
+b()  # self参数不要传入. the book name is Game of Thrones.
+
+# 判断一个对象是否是“可调用” ?通过callable()函数
+callable(Book()) # True
 
 
 
