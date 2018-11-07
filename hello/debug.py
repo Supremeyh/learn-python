@@ -136,6 +136,12 @@ python -m unittest mydict_test.py
 
 
 
+# 文档测试 doctest， 可以直接提取注释中的代码并执行测试
+# doctest非常有用，不但可以用来测试，还可以直接作为示例代码。通过某些文档生成工具，就可以自动把包含doctest的注释提取出来。
+# 用户看文档的时候，同时也看到了doctest。
+
+
+
 
 
 
