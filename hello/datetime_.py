@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # 常用内建模块
 
 # datetime是Python处理日期和时间的标准库。
