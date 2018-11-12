@@ -34,7 +34,7 @@ def signin_form():
 @app.route('/signin', methods=['POST'])
 def signin():
   if request.form['username'] == 'admin' and request.form['password'] == 'password':
-    return '<h3>hello admin </h3>'
+    return '<h3>welcome admin, this is flask ! The Python micro framework for building web applications !</h3>'
   return '<h3>bad username or password</h3>'
 
 if __name__ == '__main__':
@@ -44,4 +44,5 @@ if __name__ == '__main__':
 
 #  运行flask_do.py， Flask自带的Server在端口5000上监听
 # env FLASK_APP=flask_do.py flask run  # Running on http://127.0.0.1:5000/
-# 打开浏览器，输入首页地址http://localhost:5000/：
+# 打开浏览器，输入首页地址http://localhost:5000/
+# 再输入地址http://localhost:5000/signin
