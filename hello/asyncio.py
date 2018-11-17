@@ -29,7 +29,7 @@
 # 立等的老张，阻塞；看电视的老张，非阻塞。
 # 情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。
 
-# 协程，又称微线程，纤程。英文名Coroutine。
+# 协程，又称微线程，纤程。英文名 coroutine
 # 所以子程序调用是通过栈实现的，一个线程就是执行一个子程序。子程序切换不是线程切换，而是由程序自身控制，因此，没有线程切换的开销，和多线程比，线程数量越多，协程的性能优势就越明显。
 # 第二大优势就是不需要多线程的锁机制，因为只有一个线程，也不存在同时写变量冲突，在协程中控制共享资源不加锁，只需要判断状态就好了，所以执行效率比多线程高很多。
 # Python对协程的支持是通过generator实现的。在generator中，我们不但可以通过for循环来迭代，还可以不断调用next()函数获取由yield语句返回的下一个值。
@@ -40,7 +40,7 @@
 def consumer():
   r = ''
   while True:
-    n = yield r
+    n = yield r #  返回r, 等待下一次Send, n = Send传递的参数
     if not n:
       return
     print('[consumer] consuming %s... ' %n)
@@ -86,5 +86,7 @@ produce(c)
 # [consumer] consuming 5...
 # [consumer] consuming 200 OK...
 
+
+# next() 和 send(None) 相似: send(msg)可以传递yield的值, next()只能传递None。 
 
 # 深入理解 Python yield: https://blog.csdn.net/lftaoyuan/article/details/78915518
