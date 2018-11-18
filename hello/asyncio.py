@@ -40,7 +40,7 @@
 def consumer():
   r = ''
   while True:
-    n = yield r #  返回r, 等待下一次Send, n = Send传递的参数
+    n = yield r # 返回r, 等待下一次Send, n = Send传递的参数
     if not n:
       return
     print('[consumer] consuming %s... ' %n)
@@ -88,5 +88,6 @@ produce(c)
 
 
 # next() 和 send(None) 相似: send(msg)可以传递yield的值, next()只能传递None。 
+
 
 # 深入理解 Python yield: https://blog.csdn.net/lftaoyuan/article/details/78915518
