@@ -89,7 +89,6 @@ produce(c)
 
 # next() 和 send(None) 相似: send(msg)可以传递yield的值, next()只能传递None。 
 
-
 # 深入理解 Python yield: https://blog.csdn.net/lftaoyuan/article/details/78915518
 
 
@@ -154,8 +153,6 @@ async def init(loop):
 loop = asyncio.get_event_loop()
 loop.run_until_complete(init(loop))
 loop.run_forever()
-
-
 
 
 
