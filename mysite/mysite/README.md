@@ -10,7 +10,7 @@ django-admin 查看是否安装成功
 3、安装 PyCharm IDE
 
 4、创建一个项目
-django-admin startproject django_demo
+django-admin startproject mysite
 
 5、启动项目
 python manage.py runserver
@@ -19,4 +19,7 @@ python manage.py runserver
 
 6、创建应用
 python manage.py startapp blog
+
+
+
 ```
