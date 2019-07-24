@@ -4,7 +4,7 @@
 1、安装 python
 
 2、安装 Django
-pip install Django
+pip3 install Django
 django-admin 查看是否安装成功
 
 3、安装 PyCharm IDE
@@ -46,7 +46,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    path('blog/', include('blog.urls'))
+  url(r'^admin/', admin.site.urls),
+  path('blog/', include('blog.urls'))
 ] 
 ```
